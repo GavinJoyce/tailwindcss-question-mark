@@ -1,0 +1,19 @@
+{
+  "name": "tailwind-question-mark",
+  "version": "0.0.1",
+  "description": "A plugin that provides a helpful `?` dev time utilit",
+  "main": "src/index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GavinJoyce/tailwindcss-question-mark.git"
+  },
+  "author": "Gavin Joyce",
+  "bugs": {
+    "url": "https://github.com/GavinJoyce/tailwindcss-question-mark/issues"
+  },
+  "homepage": "https://github.com/GavinJoyce/tailwindcss-question-mark#readme"
+}
