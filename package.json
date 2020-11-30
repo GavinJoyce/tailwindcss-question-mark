@@ -1,5 +1,5 @@
 {
-  "name": "tailwind-question-mark",
+  "name": "tailwindcss-question-mark",
   "version": "0.0.1",
   "description": "A plugin that provides a helpful `?` dev time utilit",
   "main": "src/index.js",
