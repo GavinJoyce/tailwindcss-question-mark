@@ -1,6 +1,6 @@
 {
   "name": "tailwindcss-question-mark",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A plugin that provides a helpful `?` dev time utilit",
   "main": "src/index.js",
   "license": "MIT",
