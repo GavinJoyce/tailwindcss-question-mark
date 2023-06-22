@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/GavinJoyce/tailwindcss-question-mark#readme",
   "peerDependencies": {
-    "tailwindcss": ">=2.0.0"
+    "tailwindcss": ">=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1"
   }
 }
