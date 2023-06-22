@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/GavinJoyce/tailwindcss-question-mark/issues"
   },
-  "homepage": "https://github.com/GavinJoyce/tailwindcss-question-mark#readme"
+  "homepage": "https://github.com/GavinJoyce/tailwindcss-question-mark#readme",
+  "peerDependencies": {
+    "tailwindcss": ">=2.0.0"
+  }
 }
