@@ -2,9 +2,9 @@
 
 A plugin that provides a helpful `?` dev time utility.
 
-**Demo**: https://play.tailwindcss.com/FszQ6xCV4N
+**Demo**: https://play.tailwindcss.com/fXhD65EpG4?layout=horizontal
 
-![example](https://user-images.githubusercontent.com/2526/100670452-ca598300-3356-11eb-8743-5d4d3c7b740f.gif)
+![example](https://user-images.githubusercontent.com/2526/247880985-887a22f4-f5f5-42d0-89d9-7e49037490cf.gif)
 
 ## Installation
 
@@ -37,4 +37,4 @@ module.exports = {
 
 Simply add the `?` utility class to any element that you'd like to highlight.
 
-**Demo**: https://play.tailwindcss.com/FszQ6xCV4N
+**Demo**: https://play.tailwindcss.com/fXhD65EpG4?layout=horizontal
