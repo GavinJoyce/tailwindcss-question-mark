@@ -4,7 +4,7 @@ A plugin that provides a helpful `?` dev time utility.
 
 **Demo**: https://play.tailwindcss.com/fXhD65EpG4?layout=horizontal
 
-![example](https://user-images.githubusercontent.com/2526/247880985-887a22f4-f5f5-42d0-89d9-7e49037490cf.gif)
+![example](https://user-images.githubusercontent.com/2526/248293688-da86d4e7-0955-40fb-8fb2-f892b270a9a8.gif)
 
 ## Installation
 
