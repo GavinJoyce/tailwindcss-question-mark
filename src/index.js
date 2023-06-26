@@ -4,7 +4,8 @@ module.exports = plugin.withOptions(
   ({
     animationDuration = "0.6s",
     enableAnimation = true,
-    highlightColor = "#f16bc9",
+    highlightColorStart = "#f16bc9",
+    highlightColorEnd = "#f71fb6",
     widthStart = "8px",
     widthEnd = "12px",
   } = {}) => {
@@ -24,18 +25,20 @@ module.exports = plugin.withOptions(
         [`.${e("?")}`]: {
           "outline-style": OUTLINE_STYLE,
           "outline-width": widthStart,
-          "outline-color": highlightColor,
-          "box-shadow": `inset ${BOX_SHADOW_INSET_START} ${BOX_SHADOW_INSET_START} ${highlightColor}, inset -${BOX_SHADOW_INSET_START} -${BOX_SHADOW_INSET_START} ${highlightColor}`,
+          "outline-color": highlightColorStart,
+          "box-shadow": `inset ${BOX_SHADOW_INSET_START} ${BOX_SHADOW_INSET_START} ${highlightColorStart}, inset -${BOX_SHADOW_INSET_START} -${BOX_SHADOW_INSET_START} ${highlightColor}`,
           animation: animation,
         },
         [`@keyframes ${e("?")}${ANIMATION_NAME}`]: {
           "0%": {
             "outline-width": widthStart,
-            "box-shadow": `inset ${BOX_SHADOW_INSET_START} ${BOX_SHADOW_INSET_START} ${highlightColor}, inset -${BOX_SHADOW_INSET_START} -${BOX_SHADOW_INSET_START} ${highlightColor}`,
+            "outline-color": highlightColorStart,
+            "box-shadow": `inset ${BOX_SHADOW_INSET_START} ${BOX_SHADOW_INSET_START} ${highlightColorStart}, inset -${BOX_SHADOW_INSET_START} -${BOX_SHADOW_INSET_START} ${highlightColor}`,
           },
           "100%": {
             "outline-width": widthEnd,
-            "box-shadow": `inset ${BOX_SHADOW_INSET_END} ${BOX_SHADOW_INSET_END} ${highlightColor}, inset -${BOX_SHADOW_INSET_END} -${BOX_SHADOW_INSET_END} ${highlightColor}`,
+            "outline-color": highlightColorEnd,
+            "box-shadow": `inset ${BOX_SHADOW_INSET_END} ${BOX_SHADOW_INSET_END} ${highlightColorEnd}, inset -${BOX_SHADOW_INSET_END} -${BOX_SHADOW_INSET_END} ${highlightColor}`,
           },
         },
       });
