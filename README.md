@@ -41,7 +41,7 @@ Simply add the `?` utility class to any element that you'd like to highlight.
 
 ## Customizing
 
-Below is an example of how you can customize the plugin with the available configuration options and their defaults.
+Here's an example of how you can customize the plugin with the available configuration options and their defaults.
 
 ```js
 // tailwind.config.js
@@ -62,3 +62,5 @@ module.exports = {
   ],
 };
 ```
+
+**Demo with customization**: https://play.tailwindcss.com/4Y4TsxcrNU?file=config
