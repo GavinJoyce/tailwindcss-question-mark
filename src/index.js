@@ -1,5 +1,13 @@
 const plugin = require("tailwindcss/plugin");
 
+function parsePx(input, defaultValue) {
+  let value = input.match(/\d+px/);
+  if (value) {
+    return parseInt(value[0], 10);
+  }
+  return defaultValue;
+}
+
 module.exports = plugin.withOptions(
   ({
     animationDuration = "0.6s",
@@ -10,10 +18,14 @@ module.exports = plugin.withOptions(
     widthEnd = "12px",
   } = {}) => {
     return function ({ addUtilities, e }) {
-      const BOX_SHADOW_INSET_START = "4px";
-      const BOX_SHADOW_INSET_END = "6px";
       const ANIMATION_NAME = "wobble";
       const OUTLINE_STYLE = "solid";
+
+      const widthStartPx = `${parsePx(widthStart, 8) / 2}px`;
+      const widthEndPx = `${parsePx(widthEnd, 12) / 2}px`;
+
+      const boxShadowStart = `inset ${widthStartPx} ${widthStartPx} ${highlightColorStart}, inset -${widthStartPx} -${widthStartPx} ${highlightColorStart}`;
+      const boxShadowEnd = `inset ${widthEndPx} ${widthEndPx} ${highlightColorEnd}, inset -${widthEndPx} -${widthEndPx} ${highlightColorEnd}`;
 
       const animation = enableAnimation
         ? `${e(
@@ -24,21 +36,21 @@ module.exports = plugin.withOptions(
       addUtilities({
         [`.${e("?")}`]: {
           "outline-style": OUTLINE_STYLE,
-          "outline-width": widthStart,
+          "outline-width": widthStartPx,
           "outline-color": highlightColorStart,
-          "box-shadow": `inset ${BOX_SHADOW_INSET_START} ${BOX_SHADOW_INSET_START} ${highlightColorStart}, inset -${BOX_SHADOW_INSET_START} -${BOX_SHADOW_INSET_START} ${highlightColor}`,
+          "box-shadow": boxShadowStart,
           animation: animation,
         },
         [`@keyframes ${e("?")}${ANIMATION_NAME}`]: {
           "0%": {
-            "outline-width": widthStart,
+            "outline-width": widthStartPx,
             "outline-color": highlightColorStart,
-            "box-shadow": `inset ${BOX_SHADOW_INSET_START} ${BOX_SHADOW_INSET_START} ${highlightColorStart}, inset -${BOX_SHADOW_INSET_START} -${BOX_SHADOW_INSET_START} ${highlightColor}`,
+            "box-shadow": boxShadowStart,
           },
           "100%": {
-            "outline-width": widthEnd,
+            "outline-width": widthEndPx,
             "outline-color": highlightColorEnd,
-            "box-shadow": `inset ${BOX_SHADOW_INSET_END} ${BOX_SHADOW_INSET_END} ${highlightColorEnd}, inset -${BOX_SHADOW_INSET_END} -${BOX_SHADOW_INSET_END} ${highlightColor}`,
+            "box-shadow": boxShadowEnd,
           },
         },
       });
