@@ -3,40 +3,39 @@ const plugin = require("tailwindcss/plugin");
 module.exports = plugin.withOptions(
   ({
     animationDuration = "0.6s",
-    animationName = "wobble",
-    boxShadowInsetStart = "4px",
-    boxShadowInsetEnd = "6px",
     enableAnimation = true,
     highlightColor = "#f16bc9",
-    outlineWidthStart = "4px",
-    outlineWidthEnd = "6px",
-    outlineStyle = "solid",
+    widthStart = "8px",
+    widthEnd = "12px",
   } = {}) => {
     return function ({ addUtilities, e }) {
+      const BOX_SHADOW_INSET_START = "4px";
+      const BOX_SHADOW_INSET_END = "6px";
+      const ANIMATION_NAME = "wobble";
+      const OUTLINE_STYLE = "solid";
+
       const animation = enableAnimation
         ? `${e(
             "?"
-          )}${animationName} ${animationDuration} ease-in-out alternate infinite`
+          )}${ANIMATION_NAME} ${animationDuration} ease-in-out alternate infinite`
         : "none";
 
       addUtilities({
         [`.${e("?")}`]: {
-          "outline-style": outlineStyle,
-          "outline-width": outlineWidthStart,
+          "outline-style": OUTLINE_STYLE,
+          "outline-width": widthStart,
           "outline-color": highlightColor,
-          "box-shadow": `inset ${boxShadowInsetStart} ${boxShadowInsetStart} ${highlightColor}, inset -${boxShadowInsetStart} -${boxShadowInsetStart} ${highlightColor}`,
+          "box-shadow": `inset ${BOX_SHADOW_INSET_START} ${BOX_SHADOW_INSET_START} ${highlightColor}, inset -${BOX_SHADOW_INSET_START} -${BOX_SHADOW_INSET_START} ${highlightColor}`,
           animation: animation,
         },
-        [`@keyframes ${e("?")}${animationName}`]: {
+        [`@keyframes ${e("?")}${ANIMATION_NAME}`]: {
           "0%": {
-            "outline-width": outlineWidthStart,
-            "outline-color": highlightColor,
-            "box-shadow": `inset ${boxShadowInsetStart} ${boxShadowInsetStart} ${highlightColor}, inset -${boxShadowInsetStart} -${boxShadowInsetStart} ${highlightColor}`,
+            "outline-width": widthStart,
+            "box-shadow": `inset ${BOX_SHADOW_INSET_START} ${BOX_SHADOW_INSET_START} ${highlightColor}, inset -${BOX_SHADOW_INSET_START} -${BOX_SHADOW_INSET_START} ${highlightColor}`,
           },
           "100%": {
-            "outline-width": outlineWidthEnd,
-            "outline-color": highlightColor,
-            "box-shadow": `inset ${boxShadowInsetEnd} ${boxShadowInsetEnd} ${highlightColor}, inset -${boxShadowInsetEnd} -${boxShadowInsetEnd} ${highlightColor}`,
+            "outline-width": widthEnd,
+            "box-shadow": `inset ${BOX_SHADOW_INSET_END} ${BOX_SHADOW_INSET_END} ${highlightColor}, inset -${BOX_SHADOW_INSET_END} -${BOX_SHADOW_INSET_END} ${highlightColor}`,
           },
         },
       });
