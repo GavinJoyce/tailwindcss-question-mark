@@ -27,10 +27,10 @@ module.exports = {
     // ...
   },
   plugins: [
-    require('tailwindcss-question-mark'),
+    require("tailwindcss-question-mark"),
     // ...
   ],
-}
+};
 ```
 
 ## Usage
@@ -38,3 +38,27 @@ module.exports = {
 Simply add the `?` utility class to any element that you'd like to highlight.
 
 **Demo**: https://play.tailwindcss.com/fXhD65EpG4?layout=horizontal
+
+## Customizing
+
+Below is an example of how you can customize the plugin with the available configuration options and their defaults.
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    // ...
+  },
+  plugins: [
+    require("tailwindcss-question-mark")({
+      animationDuration: "0.6s",
+      enableAnimation: true,
+      highlightColorStart: "#f16bc9",
+      highlightColorEnd: "#f71fb6",
+      widthStart: "8px",
+      widthEnd: "12px",
+    }),
+    // ...
+  ],
+};
+```
