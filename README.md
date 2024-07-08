@@ -40,7 +40,7 @@ By default, the utility will animate the element with a pink highlight.
 
 Optionally, you can semantically specify a color by using the `?-{color}` utility class. For example, `?-blue-500` will highlight the element with a blue color.
 
-
+![example](https://s4.ezgif.com/tmp/ezgif-4-37dced37a1.gif)
 
 **Demo**: https://play.tailwindcss.com/fXhD65EpG4?layout=horizontal
 
