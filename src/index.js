@@ -1,59 +1,72 @@
 const plugin = require("tailwindcss/plugin");
 
+function parsePx(input, defaultValue) {
+	let value = input.match(/\d+px/);
+	if (value) {
+		return parseInt(value[0], 10);
+	}
+	return defaultValue;
+}
+
 module.exports = plugin.withOptions(
 	({
 		 animationDuration = "0.6s",
 		 enableAnimation = true,
 		 defaultHighlightColorStart = "#f16bc9",
 		 defaultHighlightColorEnd = "#f71fb6",
-		 defaultWidthStart = "8px",
-		 defaultWidthEnd = "12px",
+		 widthStart = "2px",
+		 widthEnd = "4px",
 	 } = {}) => {
 		return function ({addUtilities, e, theme}) {
 			const ANIMATION_NAME = "wobble";
 			const OUTLINE_STYLE = "solid";
 
-			// Utility generator functions
-			const createColorUtility = (color, colorName) => {
-				return {
-					[`.${e(`?-${colorName}`)}`]: {
-						"outline-color": color,
-					},
-				};
-			};
+			const createUtilitiesForColor = (colorStart, colorEnd, colorName) => {
+				const className = colorName ? `?-${colorName}` : '?';
+				const widthStartPx = `${parsePx(widthStart, 8) / 2}px`;
+				const widthEndPx = `${parsePx(widthEnd, 12) / 2}px`;
 
-			const createWidthUtility = (width, prefix) => {
+				const boxShadowStart = `inset ${widthStartPx} ${widthStartPx} ${colorStart}, inset -${widthStartPx} -${widthStartPx} ${colorStart}`;
+				const boxShadowEnd = `inset ${widthEndPx} ${widthEndPx} ${colorEnd}, inset -${widthEndPx} -${widthEndPx} ${colorEnd}`;
+
+				const animation = enableAnimation
+					? `${e(className)}${ANIMATION_NAME} ${animationDuration} ease-in-out alternate infinite`
+					: "none";
+
 				return {
-					[`.${e(`?-${prefix}-${width}`)}`]: {
-						"outline-width": `${width}px`,
+					[`.${e(className)}`]: {
+						"outline-style": OUTLINE_STYLE,
+						"outline-width": widthStartPx,
+						"outline-color": colorStart,
+						"box-shadow": boxShadowStart,
+						animation: animation,
+					},
+					[`@keyframes ${e(className)}${ANIMATION_NAME}`]: {
+						"0%": {
+							"outline-width": widthStartPx,
+							"outline-color": colorStart,
+							"box-shadow": boxShadowStart,
+						},
+						"100%": {
+							"outline-width": widthEndPx,
+							"outline-color": colorEnd,
+							"box-shadow": boxShadowEnd,
+						},
 					},
 				};
 			};
 
 			// Default utilities
-			const defaultUtilities = {
-				[`.?`]: {
-					"outline-style": OUTLINE_STYLE,
-					"outline-width": defaultWidthStart,
-					"outline-color": defaultHighlightColorStart,
-					"box-shadow": `inset 0 0 ${defaultWidthStart} ${defaultHighlightColorStart}, inset 0 0 ${defaultWidthStart} ${defaultHighlightColorStart}`,
-					animation: enableAnimation ? `${ANIMATION_NAME} ${animationDuration} ease-in-out alternate infinite` : "none",
-				},
-			};
+			const defaultUtilities = createUtilitiesForColor(defaultHighlightColorStart, defaultHighlightColorEnd);
 
 			// Custom color utilities
 			const customColors = theme('colors');
-			let customUtilities = {};
-			Object.keys(customColors).forEach(colorName => {
-				const colorValue = customColors[colorName][400] || customColors[colorName];
-				Object.assign(customUtilities, createColorUtility(colorValue, colorName));
-			});
-
-			// Width utilities
-			const widths = Array.from({length: 20}, (_, i) => i + 1); // Support widths 1 through 20
-			widths.forEach(width => {
-				Object.assign(customUtilities, createWidthUtility(width, "start"), createWidthUtility(width, "end"));
-			});
+			const customUtilities = Object.keys(customColors).reduce((acc, colorName) => {
+				const colorValueStart = customColors[colorName][400] || customColors[colorName];
+				const colorValueEnd = customColors[colorName][600] || customColors[colorName];
+				const utilities = createUtilitiesForColor(colorValueStart, colorValueEnd, colorName);
+				return {...acc, ...utilities};
+			}, {});
 
 			addUtilities({...defaultUtilities, ...customUtilities});
 		};
