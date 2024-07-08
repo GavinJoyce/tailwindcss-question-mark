@@ -2,7 +2,7 @@
 
 > This is a forked version of the
 original [`tailwindcss-question-mark`](https://github.com/GavinJoyce/tailwindcss-question-mark) plugin.
-> See [Usage](#usage-id) for more info.
+> See [Usage](#usage-id) for more info/usage.
 
 A plugin that provides a helpful `?` dev time utility.
 
