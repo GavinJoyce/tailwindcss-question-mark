@@ -56,20 +56,20 @@ Here's an example of how you can customize the plugin with the available configu
 ```js
 // tailwind.config.js
 module.exports = {
-	theme: {
-		// ...
-	},
-	plugins: [
-		require("tailwindcss-question-mark")({
-			animationDuration: "0.6s",
-			enableAnimation: true,
-			highlightColorStart: "#f16bc9",
-			highlightColorEnd: "#f71fb6",
-			widthStart: "8px",
-			widthEnd: "12px",
-		}),
-		// ...
-	],
+  theme: {
+    // ...
+  },
+  plugins: [
+    require("tailwindcss-question-mark")({
+      animationDuration: "0.6s",
+      enableAnimation: true,
+      highlightColorStart: "#f16bc9",
+      highlightColorEnd: "#f71fb6",
+      widthStart: "8px",
+      widthEnd: "12px",
+    }),
+    // ...
+  ],
 };
 ```
 
