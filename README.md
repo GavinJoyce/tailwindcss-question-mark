@@ -1,5 +1,9 @@
 # tailwindcss-question-mark
 
+> This is a forked version of the
+original [`tailwindcss-question-mark`](https://github.com/GavinJoyce/tailwindcss-question-mark) plugin.
+> See [Usage](#usage-id) for more info.
+
 A plugin that provides a helpful `?` dev time utility.
 
 **Demo**: https://play.tailwindcss.com/fXhD65EpG4?layout=horizontal
@@ -33,14 +37,15 @@ module.exports = {
 };
 ```
 
-## Usage
+## [Usage](#usage-id)
 
 Simply add the `?` utility class to any element that you'd like to highlight.
 By default, the utility will animate the element with a pink highlight.
 
-Optionally, you can semantically specify a color by using the `?-{color}` utility class. For example, `?-blue-500` will highlight the element with a blue color.
+Optionally, you can specify a color by using the `?-{color}` utility class with `{color}` being the semantic name. For
+example, `?-blue` will highlight the element with a blue color.
 
-
+![example](https://i.ibb.co/LvXtxLG/twcssqm-colors.gif)
 
 **Demo**: https://play.tailwindcss.com/fXhD65EpG4?layout=horizontal
 
@@ -51,20 +56,20 @@ Here's an example of how you can customize the plugin with the available configu
 ```js
 // tailwind.config.js
 module.exports = {
-  theme: {
-    // ...
-  },
-  plugins: [
-    require("tailwindcss-question-mark")({
-      animationDuration: "0.6s",
-      enableAnimation: true,
-      highlightColorStart: "#f16bc9",
-      highlightColorEnd: "#f71fb6",
-      widthStart: "8px",
-      widthEnd: "12px",
-    }),
-    // ...
-  ],
+	theme: {
+		// ...
+	},
+	plugins: [
+		require("tailwindcss-question-mark")({
+			animationDuration: "0.6s",
+			enableAnimation: true,
+			highlightColorStart: "#f16bc9",
+			highlightColorEnd: "#f71fb6",
+			widthStart: "8px",
+			widthEnd: "12px",
+		}),
+		// ...
+	],
 };
 ```
 
