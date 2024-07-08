@@ -17,6 +17,12 @@ module.exports = plugin.withOptions(
 		 widthStart = "2px",
 		 widthEnd = "4px",
 	 } = {}) => {
+
+		/**
+		 * This fork introduces the addition of the `createUtilitiesForColor` function, which dynamically generates utilities colors specified in the tailwind.config.
+		 * The function uses the `theme` object to parse the plain-language color names used in tailwind.
+		 * Minor changes were made to the `widthStart` and `widthEnd` default values to distinguish between elements that are close in proximity to each other.
+		 */
 		return function ({addUtilities, e, theme}) {
 			const ANIMATION_NAME = "wobble";
 			const OUTLINE_STYLE = "solid";
@@ -56,10 +62,8 @@ module.exports = plugin.withOptions(
 				};
 			};
 
-			// Default utilities
 			const defaultUtilities = createUtilitiesForColor(defaultHighlightColorStart, defaultHighlightColorEnd);
 
-			// Custom color utilities
 			const customColors = theme('colors');
 			const customUtilities = Object.keys(customColors).reduce((acc, colorName) => {
 				const colorValueStart = customColors[colorName][400] || customColors[colorName];
