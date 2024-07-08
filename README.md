@@ -12,7 +12,7 @@ A plugin that provides a helpful `?` dev time utility.
 
 ![example](https://user-images.githubusercontent.com/2526/248293688-da86d4e7-0955-40fb-8fb2-f892b270a9a8.gif)
 
-## Installation
+## [Installation](#installation "Goto Installation")
 
 Install the plugin from npm:
 
@@ -51,7 +51,7 @@ example, `?-blue` will highlight the element with a blue color.
 
 **Demo**: https://play.tailwindcss.com/fXhD65EpG4?layout=horizontal
 
-## Customizing
+## [Customizing](#customizing "Goto Customizing")
 
 Here's an example of how you can customize the plugin with the available configuration options and their defaults.
 
