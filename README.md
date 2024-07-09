@@ -1,11 +1,5 @@
 # tailwindcss-question-mark
 
-> This is a forked version of the
-original [`tailwindcss-question-mark`](https://github.com/GavinJoyce/tailwindcss-question-mark) plugin.
-> See [Usage](#usage) for more info.
-
-- - - -
-
 A plugin that provides a helpful `?` dev time utility.
 
 **Demo**: https://play.tailwindcss.com/fXhD65EpG4?layout=horizontal
